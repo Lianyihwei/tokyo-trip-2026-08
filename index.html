@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>東京親子旅遊行程 2026/8/20-8/24</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card-bg: #ffffff;
+    --text: #2b2b2b;
+    --muted: #6b6b6b;
+    --accent: #c0392b;
+    --accent-soft: #f5e3e0;
+    --border: #e8e2da;
+    --klook-bg: #e5f4ea;
+    --klook-text: #1e7a45;
+    --noklook-bg: #f2f0ea;
+    --noklook-text: #7a6a30;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1b1b1d;
+      --card-bg: #262628;
+      --text: #ececec;
+      --muted: #a3a3a3;
+      --accent: #e07a5f;
+      --accent-soft: #3a2a26;
+      --border: #3a3a3d;
+      --klook-bg: #16321f;
+      --klook-text: #7fd89c;
+      --noklook-bg: #332f22;
+      --noklook-text: #d8c77f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1b1d; --card-bg: #262628; --text: #ececec; --muted: #a3a3a3;
+    --accent: #e07a5f; --accent-soft: #3a2a26; --border: #3a3a3d;
+    --klook-bg: #16321f; --klook-text: #7fd89c;
+    --noklook-bg: #332f22; --noklook-text: #d8c77f;
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f5; --card-bg: #ffffff; --text: #2b2b2b; --muted: #6b6b6b;
+    --accent: #c0392b; --accent-soft: #f5e3e0; --border: #e8e2da;
+    --klook-bg: #e5f4ea; --klook-text: #1e7a45;
+    --noklook-bg: #f2f0ea; --noklook-text: #7a6a30;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 32px 28px 80px;
+  }
+  header.hero { text-align: center; margin-bottom: 32px; }
+  header.hero h1 { font-size: 1.9rem; margin: 0 0 8px; }
+  header.hero p { color: var(--muted); margin: 4px 0; }
+
+  .base-card {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .base-card img { width: 160px; height: 110px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+  .base-card .info { flex: 1; min-width: 280px; }
+  .base-card h2 { margin: 0 0 6px; font-size: 1.08rem; }
+  .base-card p { margin: 2px 0; font-size: 0.93rem; color: var(--muted); }
+
+  .day {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .day-header { padding: 16px 26px; background: var(--accent); color: #fff; }
+  .day-header .date { font-size: 0.85rem; opacity: 0.9; }
+  .day-header h2 { margin: 2px 0 0; font-size: 1.25rem; }
+  .day-body { padding: 22px 26px; }
+
+  .transport {
+    font-size: 0.87rem;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 0 0 20px;
+  }
+  .transport b { color: var(--text); }
+  .transport .leg { display: block; margin: 3px 0; }
+  .transport .leg .line { color: var(--accent); font-weight: 600; }
+
+  .spot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+  }
+  .spot {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+  }
+  .spot img { width: 100%; height: 190px; object-fit: cover; }
+  .spot .body { padding: 14px 16px 16px; }
+  .spot h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .tag {
+    display: inline-block; font-size: 0.72rem;
+    background: var(--accent-soft); color: var(--accent);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .tag.klook { background: var(--klook-bg); color: var(--klook-text); }
+  .tag.noklook { background: var(--noklook-bg); color: var(--noklook-text); }
+  .spot p { margin: 4px 0; font-size: 0.9rem; }
+  .spot ul { margin: 6px 0; padding-left: 18px; font-size: 0.88rem; }
+  .spot a { color: var(--accent); }
+
+  .extra-box {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    font-size: 0.88rem;
+  }
+  .extra-box b { color: var(--accent); }
+
+  footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>東京親子旅遊行程</h1>
+    <p>2026/8/20（四）— 8/24（一）・ 2 大 2 小（12 歲、10 歲）</p>
+  </header>
+
+  <div class="base-card">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Akihabara_Main_Street.jpg" alt="秋葉原街景">
+    <div class="info">
+      <h2>本次住宿基地：MONday Apart Premium AKIHABARA</h2>
+      <p>4 晚皆入住此處，秋葉原車站步行約 4 分鐘。</p>
+      <p>秋葉原正好卡在山手線／京濱東北線／築波特快線／日比谷線的交會點，去淺草、上野、晴空塔、東京鐵塔都能直達或一次轉乘解決，豐洲＋台場單趟約 30–40 分鐘也還算輕鬆。</p>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <section class="day">
+    <div class="day-header">
+      <div class="date">8/20（週四）</div>
+      <h2>抵達東京 → 入住秋葉原（航班 19:40 落地，晚上不排行程）</h2>
+    </div>
+    <div class="day-body">
+      <div class="transport">
+        <span class="leg"><b>19:40</b> 成田機場落地 → 入境審查＋提領行李，約 45–60 分</span>
+        <span class="leg"><b>約 20:30–21:00</b> 出關，搭乘 <span class="line">京成電鐵 Skyliner</span>（成田機場 → 京成上野，最快約 41–51 分）→ 轉乘 <span class="line">JR 山手線／京濱東北線</span>（京成上野旁的 JR 上野站 → 秋葉原，1 站約 5 分），全程約 70–90 分</span>
+        <span class="leg">經濟版：<span class="line">京成本線特急</span>（車資較便宜、車程稍長）→ 京成上野 → 同樣轉乘 JR 至秋葉原</span>
+        <span class="leg"><b>預估抵達飯店：22:00–22:30</b>，這天不安排任何額外行程，放行李後直接覓食、休息</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Akihabara_Main_Street.jpg" alt="秋葉原">
+          <div class="body">
+            <div class="badges"><span class="tag">Check-in</span></div>
+            <h3>MONday Apart Premium AKIHABARA</h3>
+            <p>房型皆 36㎡以上，含小廚房、洗衣機，適合親子連住。這麼晚抵達不適合再排景點，放下行李後就近解決晚餐即可。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Don_Quijote_Akihabara_Shop.JPG" alt="秋葉原唐吉訶德店">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">22 點後仍營業</span></div>
+            <h3>附近超市／唐吉訶德，解決晚餐與隔天早餐</h3>
+            <ul>
+              <li><b>まいばすけっと 岩本町店</b>：距飯店約 500 公尺，步行 6–7 分鐘，營業至 24:00，可買熟食、飯糰、飲料</li>
+              <li><b>驚安殿堂 唐吉訶德 秋葉原店</b>：秋葉原站電氣街口步行約 3 分鐘，<b>24 小時營業</b>，不管幾點到都能買，泡麵、零食、飲料一次備齊</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 2 -->
+  <section class="day">
+    <div class="day-header">
+      <div class="date">8/21（週五）</div>
+      <h2>築地 → 豐洲・teamLab（固定行程）・傍晚起彈性調整</h2>
+    </div>
+    <div class="day-body">
+
+      <h3 style="margin:0 0 10px;">上午：築地場外市場（早餐，固定行程）</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 築地</b>：<span class="line">東京 Metro 日比谷線</span>直達，約 12 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tsukiji_Outer_Market_-01.jpg" alt="築地場外市場">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">現場購買，免門票</span></div>
+            <h3>築地場外市場</h3>
+            <p>海鮮丼、玉子燒、串燒等小吃聚集，起得早可以當早餐吃，起得晚就直接當午餐，彈性很大，孩子接受度通常不錯。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">中午：豐洲・teamLab Planets（15:30 入場）</h3>
+      <div class="transport">
+        <span class="leg"><b>築地 → 豐洲</b>：從 <span class="line">東京 Metro 日比谷線</span> 築地站步行約 5–7 分鐘（地面距離約150公尺）轉乘 <span class="line">東京 Metro 有樂町線</span> 新富町站（兩站officially列為轉乘站），搭有樂町線直達豐洲，含步行全程約 12 分，¥178</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Toyosu_fish_market-4a.jpg" alt="豐洲市場">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">現場免費入場</span></div>
+            <h3>豐洲市場或千客萬來（午餐）</h3>
+            <p>中午在豐洲市場或旁邊的千客萬來吃海鮮，兩邊都有餐廳可選，看排隊狀況或當下想吃什麼決定，逛完後留一段緩衝時間，準備 15:30 進 teamLab。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/At_teamLab_Planets_%2848277793276%29.jpg" alt="teamLab Planets">
+          <div class="body">
+            <div class="badges"><span class="tag klook">Klook 可預購</span></div>
+            <h3>teamLab Planets TOKYO（15:30 入場，固定行程）</h3>
+            <ul>
+              <li>開放時間：每日 8:00–22:00（最後入場 21:00）</li>
+              <li>票價：官網成人約 ¥3,600 起（浮動制）／兒童（4–12歲）¥1,500，Klook 同票種常有折扣價</li>
+              <li><strong>現場不售票</strong>，務必在 Klook 或官網先訂好 15:30 時段的電子票</li>
+            </ul>
+            <p><a href="https://www.teamlab.art/zh-hant/e/planets/" target="_blank">官方網站</a> ・ <a href="https://www.klook.com/en-US/activity/25300-teamlab-planets-toyosu-tokyo-ticket/" target="_blank">Klook 頁面</a></p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">傍晚：看夕陽地點彈性二選一（其餘都可視狀況調整）</h3>
+
+      <p style="font-size:0.9rem;color:var(--muted);margin:0 0 14px;"><b>選項一：豐洲 千客萬來頂樓足湯庭園</b>——teamLab 出來不用移動，就在原地，8樓足湯庭園可以邊泡腳邊看夕陽，最省力。</p>
+      <p style="font-size:0.9rem;color:var(--muted);margin:0 0 14px;"><b>選項二：台場海濱公園</b>——teamLab 出來搭百合海鷗號到台場，沙灘、彩虹橋、自由女神像同框，比千客萬來更有「台場感」，但要多花一趟車程；順路的話 DiverCity 獨角獸鋼彈（點燈秀 19:00–21:30，每半小時一場）可以當彈性加碼，不趕的話再去看一眼。</p>
+      <div class="transport">
+        <span class="leg"><b>豐洲／新豐洲 → 台場海濱公園（選項二）</b>：<span class="line">百合海鷗號（Yurikamome）</span>直達，約 15–20 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Toyosu_Senkyaku_Banrai_%E6%99%82%E3%81%AE%E9%90%98%E5%BA%83%E5%A0%B4_2024.JPG" alt="豐洲千客萬來">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費足湯</span></div>
+            <h3>豐洲 千客萬來（選項一）</h3>
+            <p>江戶風情商店街，8樓足湯庭園免費開放，可眺望豐洲景色跟夕陽，不用再移動最輕鬆。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Odaiba_Statue_of_Liberty_%26_Rainbow_Bridge_3.jpg" alt="台場海濱公園夕陽與彩虹橋">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費，開放式公園</span></div>
+            <h3>台場海濱公園（選項二）</h3>
+            <p>沙灘、彩虹橋與自由女神像複製像同框，是看夕陽跟夜景的熱門地點，teamLab 結束後直接過來剛好接上黃昏時段。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">晚上：新橋・東京鐵塔小歇 30 分鐘（只看外觀、不登塔，登塔留到 8/23）</h3>
+      <div class="transport">
+        <span class="leg"><b>從千客萬來出發 → 新橋</b>：<span class="line">東京 Metro 有樂町線</span>（豐洲 → 有樂町）→ 轉乘 <span class="line">JR 山手線</span>（有樂町 → 新橋，1 站），全程約 20 分</span>
+        <span class="leg"><b>從台場海濱公園出發 → 新橋</b>：<span class="line">百合海鷗號</span>直達，約 13 分，¥325</span>
+        <span class="leg"><b>新橋 → 東京鐵塔</b>：<span class="line">都營地下鐵淺草線／三田線</span>直達（不用轉車），約 19–23 分，¥180；或沿路散步約 30 分鐘</span>
+        <span class="leg"><b>東京鐵塔 → 秋葉原</b>：附近神谷町站搭 <span class="line">東京 Metro 日比谷線</span>直達，約 20 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyo_Tower_01.jpg" alt="東京鐵塔外觀">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">只看外觀，免門票</span></div>
+            <h3>東京鐵塔（外觀＋休息，約 30 分鐘）</h3>
+            <p>晚上點燈很好拍，只在鐵塔下走走、拍照、坐著休息，不買票登塔。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-box">
+        <b>晚餐：</b>彈性決定，新橋周邊居酒屋、餐廳選擇多，可以在去東京鐵塔前後解決；也可以先不吃，回秋葉原後再找地方吃，兩種都可以，看當下累不累、餓不餓決定。
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 3+4 combined option menu -->
+  <section class="day">
+    <div class="day-header">
+      <div class="date">8/22（週六）・8/23（週日）</div>
+      <h2>彈性選項行程 A～F（8/22 定案選項 B 川越、8/23 定案選項 A 淺草・晴空塔）</h2>
+    </div>
+    <div class="day-body">
+
+      <div class="extra-box" style="margin-bottom:24px;">
+        <b>用法：</b>下面 A～F 原為獨立一日路線選項，秋葉原出發、秋葉原回來。目前已定案：<b>8/22 走選項 B（川越）</b>，<b>8/23 走選項 A（淺草・晴空塔）</b>，理由是川越轉乘複雜、需現場買票，變數較多，適合排在離出發日還有緩衝的一天；淺草・晴空塔路線單純、離秋葉原飯店近，適合排在回國前一晚。C～F 保留作為備案，若天氣或體力狀況需要換方案可參考。
+      </div>
+
+      <h3 style="margin:0 0 10px;">選項 A：上午未定・下午淺草雷門・晴空塔</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 淺草</b>：<span class="line">築波特快線（TX）</span>直達，約 4–5 分</span>
+        <span class="leg"><b>淺草 → 晴空塔</b>：<span class="line">東武晴空塔線（東武スカイツリーライン）</span>直達 1 站，約 3 分（或步行約 20 分）</span>
+        <span class="leg"><b>回秋葉原</b>：從淺草或押上搭 <span class="line">築波特快線（TX）</span>直達，約 4–5 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ameyoko_Ueno_Tokyo_Japan.jpg" alt="上野阿美橫丁">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">彈性・免費逛街</span></div>
+            <h3>上野：阿美橫丁</h3>
+            <p>秋葉原搭JR山手線／京濱東北線一站約5分即達，早市氣氛的商店街，逛零食、乾貨、藥妝，順道當早午餐點心站。想排就當上午行程起點，不想排就直接從秋葉原搭TX到淺草。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Main_building_of_the_Tokyo_National_Museum.jpg" alt="東京國立博物館">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">彈性・需門票</span></div>
+            <h3>上野：東京國立博物館</h3>
+            <p>阿美橫丁旁上野公園內，日本最大的國立博物館，館藏含國寶級文物，展廳大、走動多，適合對歷史文物有興趣、體力夠的話再排；跟阿美橫丁一樣是彈性選項，不排也不影響下午行程。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kaminarimon1500.jpg" alt="淺草雷門">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費參拜</span></div>
+            <h3>下午：淺草・雷門・仲見世通</h3>
+            <p>雷門大燈籠、仲見世商店街小吃與伴手禮，走到淺草寺參拜，寺境全年開放（一般日出到日落較舒適）。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyo_Sky_Tree_2012.JPG" alt="東京晴空塔">
+          <div class="body">
+            <div class="badges"><span class="tag klook">Klook 可預購</span></div>
+            <h3>晴空塔</h3>
+            <p>離淺草只有一站，安排在傍晚上塔正好接夜景。天望甲板（350m）／天望迴廊（450m）2026年4月起改為浮動定價，年齡分「大人（15歲以上）」與「小人（6–14歲）」。Klook 有預售折扣票，可事先劃位省現場排隊。</p>
+            <p><a href="https://www.tokyo-skytree.jp/cn_t/ticket/" target="_blank">官方售票頁</a> ・ <a href="https://www.klook.com/en-US/activity/41352-tokyo-skytree/" target="_blank">Klook 頁面</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-box" style="margin-top:18px;">
+        <b>上午彈性用法：</b>阿美橫丁、東京國立博物館兩個都排的話上午會偏滿（博物館逛起來慢），建議挑一個；上野逛完搭東京Metro銀座線到淺草（約5分）接下午行程；上午不想排的話直接秋葉原搭TX到淺草，睡晚一點或留白休息都可以。
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">選項 B：川越（小江戶）・池袋【8/22 定案行程】</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 池袋</b>：<span class="line">JR 山手線</span>直達，約 20 分</span>
+        <span class="leg"><b>池袋 → 川越</b>：<span class="line">東武東上線（急行）</span>直達，約 32–35 分</span>
+        <span class="leg"><b>川越 → 池袋</b>：<span class="line">東武東上線（急行）</span>直達，約 32–35 分（原路搭回，車票已含來回）</span>
+        <span class="leg"><b>池袋 → 秋葉原</b>：<span class="line">JR 山手線</span>直達，約 20 分</span>
+        <span class="leg"><b>車票：小江戶川越クーポン（東武鉄道官方套票）</b>：大人 ¥1,110／兒童 ¥580，<strong>池袋站東武東上線自動售票機當日購買即可</strong>，內含池袋⇄川越（或川越市）來回車資＋川越市區東武巴士（指定區間）與小江戶名所巡迴巴士全線一日無限搭乘，比車資、巴士票分開買約省 ¥270／人；川越祭典當日與 12/31–1/3 停售。<a href="https://www.tobu.co.jp/odekake/ticket/tojo-line/koedo.html" target="_blank">東武鉄道官方頁面</a></span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kurazukuri_Street_in_Little_Edo.jpg" alt="川越小江戶藏造老街">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費逛街</span></div>
+            <h3>上午：川越小江戶（藏造老街・時之鐘）</h3>
+            <p>抵達池袋站先在自動售票機買好小江戶川越クーポン，搭東武東上線急行到川越，景點分散（蔵の街、氷川神社、喜多院、菓子屋橫丁），建議善用套票內含的巡迴巴士省腳力。菓子屋橫丁可以買地瓜甜點當點心。目標下午 3、4 點前搭回池袋，晚上還有彈性行程。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ikebukuro_east_entrance.jpg" alt="池袋車站東口">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費逛街用餐</span></div>
+            <h3>下午：池袋</h3>
+            <p>百貨與美食選擇多，LOFT 池袋是文具控必逛的地方，可以在這裡吃晚餐或當作晚上彈性行程的起點。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tokyo_Sky_Tree_2012.JPG" alt="東京晴空塔">
+          <div class="body">
+            <div class="badges"><span class="tag klook">彈性・Klook 可預購</span></div>
+            <h3>晚上二選一：池袋太陽城（含サンシャイン水族館）or 晴空塔夜景</h3>
+            <p>看小孩體力決定：① 留在池袋逛太陽城／サンシャイン水族館／NAMJA TOWN，不用再移動，川越走一整天後這個選項體力負擔最小；② 若還有體力，可從池袋搭 <span class="line">JR 山手線</span>到秋葉原（約20分）轉 <span class="line">TX</span> 到淺草（約4–5分）再一站到晴空塔看夜景（含すみだ水族館），車程比留在池袋多，建議傍晚先確認精神狀況再決定。すみだ水族館與登塔已排在8/23選項A，若8/22選晴空塔這邊建議只挑水族館或登塔擇一，避免重複。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ikebukuro-Sunshine60-2016-Luka-Peternel.jpg" alt="池袋太陽城">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">彈性・需門票</span></div>
+            <h3>池袋：太陽城（Sunshine City）／サンシャイン水族館</h3>
+            <p>從池袋站東口步行約8分即達，複合商場含購物中心、展望台，屋頂（地上40公尺）還有<b>サンシャイン水族館（Sunshine Aquarium）</b>，企鵝、海獅在頭頂水槽悠游、池袋天際線當背景。跟晚餐、逛街排在同一區不用額外移動，是川越走一整天後最省腳力的晚上選項。<a href="https://sunshinecity.jp/aquarium/" target="_blank">官方網站</a></p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Namco_NamjaTown_front.jpg" alt="NAMJA TOWN">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">彈性・需門票</span></div>
+            <h3>池袋：NAMJA TOWN</h3>
+            <p>太陽城2樓的室內主題樂園，餃子主題街、甜點街、輕遊樂設施為主，室內不怕曬不怕雨，適合小孩放電，跟太陽城可以排同一站，兩個都排會偏滿建議擇一。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zoshigaya_Kishimojindo.jpg" alt="雜司谷鬼子母神堂參道">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">彈性・免費參拜</span></div>
+            <h3>雜司谷：鬼子母神堂參道散策</h3>
+            <p>從池袋搭東京Metro副都心線到雜司谷站約4分，步行約8分到參道，400年老欅木參道、老巷弄氣氛跟池袋鬧區完全不同，走累了想找個安靜地方散步可以排這裡，只是純散策不用門票。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-box" style="margin-top:18px;">
+        <b>池袋彈性加碼：</b>太陽城、NAMJA TOWN、雜司谷參道都是彈性加碼，不是每個都要排——太陽城和NAMJA TOWN在同一棟建築，適合當「小孩放電」選一個；雜司谷參道則是完全不同調性的安靜老街，想換口味再排，三個都不排也沒關係，直接池袋逛街吃飯回秋葉原。
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">選項 C：鎌倉一日遊（含江之電）</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 東京</b>：<span class="line">JR 中央線／山手線</span>直達，約 5 分</span>
+        <span class="leg"><b>東京 → 鎌倉</b>：轉乘 <span class="line">JR 橫須賀線</span>直達，約 55–60 分（單趟全程約 65–75 分，含 1 次轉乘）</span>
+        <span class="leg"><b>鎌倉站內移動：江之電（Enoshima Electric Railway）</b>：JR鎌倉站出站步行即達江之電鎌倉站，搭江之電到長谷站（約5分）再步行約7-10分到大佛；江之電是鎌倉觀光的主要交通方式，沿線還有極樂寺、鎌倉高校前（灌籃高手平交道）、江之島等站</span>
+        <span class="leg"><b>江之電一日券「のりおりくん」</b>：大人 ¥800／兒童 ¥400，全線無限次上下車，搭超過4段就回本，比單買票划算，全站售票機或有人窗口都可購買</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tsurugaoka_Hachimangu_Shrine_%40_Kamakura_(13897654302).jpg" alt="鶴岡八幡宮">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費參拜</span></div>
+            <h3>鶴岡八幡宮</h3>
+            <p>鎌倉的信仰中心，参道兩旁景色優美，從JR鎌倉站步行約10分鐘可達，適合安排一日遊的起點。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Great_Buddha_of_Kamakura_(Daibutsu).jpg" alt="鎌倉大佛">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">需門票，現場購買</span></div>
+            <h3>鎌倉大佛（高德院）</h3>
+            <p>搭江之電到長谷站再步行約7-10分即達，是鎌倉地標之一。附近有小町通商店街，可以吃魩仔魚丼、抹茶甜點當午餐，因為單趟車程較長，建議把這個選項排在比較早出發的一天。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-box" style="margin-top:18px;">
+        <b>體力還夠的話：</b>買了江之電一日券可以順路延伸到江之島（長谷再往前約20分鐘），海邊風景跟鎌倉市區完全不同調性，不趕的話可以加碼過去看看。
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">選項 D：根津美術館・明治神宮</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 原宿</b>：<span class="line">JR 山手線</span>直達不轉車，約 25–30 分</span>
+        <span class="leg"><b>原宿 → 根津美術館</b>：步行經表參道，約 15–20 分</span>
+        <span class="leg"><b>根津美術館 → 明治神宮</b>：步行返回原宿方向，約 15–20 分</span>
+        <span class="leg"><b>回秋葉原</b>：<span class="line">JR 山手線</span>直達不轉車，約 25–30 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Nezu_museum_entrance_tokyo_2014.jpg" alt="根津美術館">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">需門票，現場購買</span></div>
+            <h3>上午：根津美術館</h3>
+            <p>私人美術館，收藏日本與東亞古美術，庭園幽靜，步調比較慢，適合喜歡藝術、不趕行程的安排。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Meiji_Shrine_Tokyo%2C_Japan.jpg" alt="明治神宮">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費參拜</span></div>
+            <h3>下午：明治神宮</h3>
+            <p>森林參道、鳥居與傳統神社氛圍。開閉門時間依日出日落調整，8月的確切時刻請出發前查<a href="https://www.meijijingu.or.jp/sanpai/" target="_blank">官網月曆</a>確認（夏季通常開門較早、閉門較晚）。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Takeshita_Street_in_December_2018.jpg" alt="原宿竹下通">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費逛街</span></div>
+            <h3>額外：原宿竹下通</h3>
+            <p>從明治神宮步行可達，逛街、可麗餅與流行小物，適合孩子放電購物，體力夠可以加碼。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">選項 E：涉谷・六本木・麻布台之丘（新增）</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 涉谷</b>：<span class="line">JR 山手線</span>直達不轉車，約 30 分</span>
+        <span class="leg"><b>涉谷 → 六本木／神谷町</b>：<span class="line">JR 山手線</span>1 站到惠比壽 → 轉乘 <span class="line">東京 Metro 日比谷線</span>，約 15–20 分</span>
+        <span class="leg"><b>回秋葉原</b>：<span class="line">東京 Metro 日比谷線</span>直達，不用再轉車</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shibuya_crossing.jpg" alt="涉谷十字路口">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費，額外景點建議</span></div>
+            <h3>上午：涉谷十字路口・忠犬八公像</h3>
+            <p>體驗世界知名的行人大十字路口與八公像拍照，順道逛涉谷 SKY 展望台也可以（需另外買票）。</p>
+          </div>
+        </div>
+
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Azabudai_Hills_Garden_Plaza_A_and_B_20241021.jpg" alt="麻布台之丘">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">額外景點建議</span></div>
+            <h3>下午：六本木・麻布台之丘</h3>
+            <p>teamLab Borderless 新館所在地，若孩子還想再看一次 teamLab、跟 8/21 的 teamLab Planets 湊成系列行程可以安排（需另外買票）。</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:26px 0;">
+
+      <h3 style="margin:0 0 10px;">選項 F：橫濱中華街・港未來（新增）</h3>
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 橫濱</b>：<span class="line">JR 京濱東北線</span>直達，約 42–45 分</span>
+        <span class="leg"><b>回秋葉原</b>：同線直達，約 42–45 分</span>
+      </div>
+      <div class="spot-grid">
+        <div class="spot">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yokohama_Chinatown_entrance.jpg" alt="橫濱中華街">
+          <div class="body">
+            <div class="badges"><span class="tag noklook">免費逛街用餐</span></div>
+            <h3>橫濱中華街・港未來</h3>
+            <p>日本最大中華街，小籠包、叉燒包當午餐；港未來一帶有地標塔展望台、摩天輪，單趟車程接近 45 分鐘，建議排在比較不趕的一天。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Day 5 -->
+  <section class="day">
+    <div class="day-header">
+      <div class="date">8/24（週一）</div>
+      <h2>返程：秋葉原 → 成田機場</h2>
+    </div>
+    <div class="day-body">
+      <div class="transport">
+        <span class="leg"><b>秋葉原 → 成田機場</b>：<span class="line">JR 山手線／京濱東北線</span>（秋葉原 → 上野，1 站）→ 轉乘 <span class="line">京成電鐵 Skyliner</span>（京成上野 → 成田機場），全程約 70–90 分</span>
+        <span class="leg">或於秋葉原步行至 JR 秋葉原站搭 <span class="line">JR 中央線／山手線</span>至東京站，轉乘 <span class="line">JR 成田特快（N'EX）</span>直達成田機場</span>
+      </div>
+      <p style="font-size:0.9rem;color:var(--muted);">若行李較多，可請飯店協助宅急便寄送至機場（需在退房前一天洽詢櫃台確認截單時間），輕裝移動更省力。</p>
+    </div>
+  </section>
+
+  <footer>
+    圖片來源：Wikimedia Commons（各景點條目公開授權圖片）。行程時刻、票價與 Klook 優惠會隨季節調整，出發前請再次確認官方最新資訊。
+  </footer>
+
+</div>
+</body>
+</html>
